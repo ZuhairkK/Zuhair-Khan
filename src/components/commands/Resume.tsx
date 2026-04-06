@@ -2,18 +2,16 @@ import { useContext } from "react";
 import _ from "lodash";
 import { termContext } from "../Terminal";
 
-const Gui: React.FC = () => {
+const Resume: React.FC = () => {
   const { history, rerender } = useContext(termContext);
 
-  /* ===== get current command ===== */
   const currentCommand = _.split(history[0], " ");
 
-  /* ===== check current command makes redirect ===== */
-  if (rerender && currentCommand[0] === "gui") {
+  if (rerender && currentCommand[0] === "resume") {
     window.open("/resume/Zuhair%27s%20Resume.jpg", "_blank");
   }
 
   return <span></span>;
 };
 
-export default Gui;
+export default Resume;

@@ -6,6 +6,7 @@ import Experience from "./commands/Experience";
 import Email from "./commands/Email";
 import GeneralOutput from "./commands/GeneralOutput";
 import Gui from "./commands/Gui";
+import Resume from "./commands/Resume";
 import Help from "./commands/Help";
 import Welcome from "./commands/Welcome";
 import History from "./commands/History";
@@ -46,6 +47,7 @@ const Output: React.FC<Props> = ({ index, cmd }) => {
           history: <History />,
           projects: <Projects />,
           pwd: <GeneralOutput>/home/zuhair</GeneralOutput>,
+          resume: <Resume />,
           socials: <Socials />,
           themes: <Themes />,
           welcome: <Welcome />,
