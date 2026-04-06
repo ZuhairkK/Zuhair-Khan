@@ -20,18 +20,6 @@ const eduBg = [
     title: "B.Sc in Computer Science",
     desc: "University of Waterloo | 2025 - 2030 (expected)",
   },
-  {
-    title: "Growth/GTM Intern",
-    desc: "Catalyst Labs | Waterloo, Canada | 2025 - Present",
-  },
-  {
-    title: "Marketing Lead",
-    desc: "Hack The North | Waterloo, Canada | 2025 - Present",
-  },
-  {
-    title: "Growth Marketing Intern",
-    desc: "StudyStream | London, UK | Dec 2025 - Mar 2026",
-  },
 ];
 
 export default Education;

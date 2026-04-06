@@ -2,6 +2,7 @@ import About from "./commands/About";
 import Clear from "./commands/Clear";
 import Echo from "./commands/Echo";
 import Education from "./commands/Education";
+import Experience from "./commands/Experience";
 import Email from "./commands/Email";
 import GeneralOutput from "./commands/GeneralOutput";
 import Gui from "./commands/Gui";
@@ -39,6 +40,7 @@ const Output: React.FC<Props> = ({ index, cmd }) => {
           echo: <Echo />,
           education: <Education />,
           email: <Email />,
+          experience: <Experience />,
           gui: <Gui />,
           help: <Help />,
           history: <History />,
