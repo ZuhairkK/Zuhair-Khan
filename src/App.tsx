@@ -10,7 +10,7 @@ const ReelsSection = styled.div`
   gap: 1rem;
   justify-content: center;
   padding: 2rem 1.25rem;
-  border-top: 1px solid ${({ theme }) => theme.colors?.text[400] ?? "#333"};
+  border-top: 1px solid ${({ theme }) => theme.colors?.text[300] ?? "#333"};
 `;
 
 const ReelFrame = styled.iframe`

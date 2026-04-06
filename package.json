@@ -51,6 +51,9 @@
     "vite-plugin-pwa": "^0.14.7",
     "vitest": "^0.31.1"
   },
+  "engines": {
+    "npm": ">=8"
+  },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
       "eslint",
