@@ -1,8 +1,27 @@
 import { createContext, useEffect, useState } from "react";
-import { DefaultTheme, ThemeProvider } from "styled-components";
+import styled, { DefaultTheme, ThemeProvider } from "styled-components";
 import { useTheme } from "./hooks/useTheme";
 import GlobalStyle from "./components/styles/GlobalStyle";
 import Terminal from "./components/Terminal";
+
+const ReelsSection = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+  border-top: 1px solid ${({ theme }) => theme.colors?.text[400] ?? "#333"};
+`;
+
+const ReelFrame = styled.iframe`
+  border: none;
+  border-radius: 8px;
+  width: 300px;
+  height: 480px;
+  flex-shrink: 0;
+`;
+
+const reels = ["DT_6HAEjBuK", "DUl5gMdjgrQ", "DVpZBfVjHT4"];
 
 export const themeContext = createContext<
   ((switchTheme: DefaultTheme) => void) | null
@@ -59,6 +78,17 @@ function App() {
           <GlobalStyle />
           <themeContext.Provider value={themeSwitcher}>
             <Terminal />
+            <ReelsSection>
+              {reels.map(shortcode => (
+                <ReelFrame
+                  key={shortcode}
+                  src={`https://www.instagram.com/p/${shortcode}/embed/`}
+                  allowFullScreen
+                  scrolling="no"
+                  loading="lazy"
+                />
+              ))}
+            </ReelsSection>
           </themeContext.Provider>
         </ThemeProvider>
       )}
