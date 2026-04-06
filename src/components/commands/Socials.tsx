@@ -70,7 +70,7 @@ const socials = [
   {
     id: 4,
     title: "Resume",
-    url: "/resume/Zuhair%27s%20Resume.jpg",
+    url: "/resume/resume.jpg",
     tab: 2,
   },
   {

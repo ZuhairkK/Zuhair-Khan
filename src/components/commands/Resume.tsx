@@ -8,7 +8,7 @@ const Resume: React.FC = () => {
   const currentCommand = _.split(history[0], " ");
 
   if (rerender && currentCommand[0] === "resume") {
-    window.open("/resume/Zuhair%27s%20Resume.jpg", "_blank");
+    window.open("/resume/resume.jpg", "_blank");
   }
 
   return <span></span>;
