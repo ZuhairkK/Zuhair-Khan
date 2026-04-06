@@ -14,19 +14,19 @@ import { termContext } from "../Terminal";
 import Usage from "../Usage";
 
 const Projects: React.FC = () => {
-  const { arg, history, rerender } = useContext(termContext);
+  const { arg, history, rerender, index } = useContext(termContext);
 
   /* ===== get current command ===== */
-  const currentCommand = getCurrentCmdArry(history);
+  const currentCommand = getCurrentCmdArry(history, index);
 
   /* ===== check current command is redirect ===== */
   useEffect(() => {
-    if (checkRedirect(rerender, currentCommand, "projects")) {
+    if (checkRedirect(rerender, currentCommand, "projects", index)) {
       projects.forEach(({ id, url }) => {
         id === parseInt(arg[1]) && window.open(url, "_blank");
       });
     }
-  }, [arg, rerender, currentCommand]);
+  }, [arg, rerender, currentCommand, index]);
 
   /* ===== check arg is valid ===== */
   const checkArg = () =>

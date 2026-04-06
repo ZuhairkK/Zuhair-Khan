@@ -15,19 +15,19 @@ import Usage from "../Usage";
 const myThemes = _.keys(theme);
 
 const Themes: React.FC = () => {
-  const { arg, history, rerender } = useContext(termContext);
+  const { arg, history, rerender, index } = useContext(termContext);
 
   const themeSwitcher = useContext(themeContext);
 
   /* ===== get current command ===== */
-  const currentCommand = getCurrentCmdArry(history);
+  const currentCommand = getCurrentCmdArry(history, index);
 
   /* ===== check current command makes redirect ===== */
   useEffect(() => {
-    if (checkThemeSwitch(rerender, currentCommand, myThemes)) {
+    if (checkThemeSwitch(rerender, currentCommand, myThemes, index)) {
       themeSwitcher?.(theme[currentCommand[2]]);
     }
-  }, [arg, rerender, currentCommand]);
+  }, [arg, rerender, currentCommand, index, themeSwitcher]);
 
   /* ===== check arg is valid ===== */
   const checkArg = () =>

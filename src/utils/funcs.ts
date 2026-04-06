@@ -28,51 +28,51 @@ export const isArgInvalid = (
 ) => arg[0] !== action || !_.includes(options, arg[1]) || arg.length > 2;
 
 /**
- * Transform current cmd & arg into array
- * then return back the array
- * @param {string[]} history - The history array
- * @returns {string[]} array of cmd string
+ * Parse the command line for a specific history row (newest-first order).
+ * history[0] is always the latest command; each output row must use history[lineIndex].
  */
-export const getCurrentCmdArry = (history: string[]) =>
-  _.split(history[0].trim(), " ");
+export const getCurrentCmdArry = (history: string[], lineIndex = 0) =>
+  _.split(history[lineIndex].trim(), " ");
 
 /**
- * Check current render makes redirect
- * @param {boolean} rerender - is submitted or not
- * @param {string[]} currentCommand - current submitted command
- * @param {string} command - the command of the function
- * @returns {boolean} redirect - true | false
+ * Redirect / window.open only for the latest output row (lineIndex === 0).
+ * Project ids must match listed projects (1–2); socials use 1–4.
  */
 export const checkRedirect = (
   rerender: boolean,
   currentCommand: string[],
-  command: string
-): boolean =>
-  rerender && // is submitted
-  currentCommand[0] === command && // current command starts with ('socials'|'projects')
-  currentCommand[1] === "go" && // first arg is 'go'
-  currentCommand.length > 1 && // current command has arg
-  currentCommand.length < 4 && // if num of arg is valid (not `projects go 1 sth`)
-  _.includes([1, 2, 3, 4], parseInt(currentCommand[2])); // arg last part is one of id
+  command: string,
+  lineIndex: number
+): boolean => {
+  const id = parseInt(currentCommand[2], 10);
+  const validIds = command === "projects" ? [1, 2] : [1, 2, 3, 4];
+  return (
+    lineIndex === 0 &&
+    rerender &&
+    currentCommand[0] === command &&
+    currentCommand[1] === "go" &&
+    currentCommand.length > 1 &&
+    currentCommand.length < 4 &&
+    _.includes(validIds, id)
+  );
+};
 
 /**
- * Check current render makes redirect for theme
- * @param {boolean} rerender - is submitted or not
- * @param {string[]} currentCommand - current submitted command
- * @param {string[]} themes - the command of the function
- * @returns {boolean} redirect - true | false
+ * Theme switch only when this themes line is the most recent command.
  */
 export const checkThemeSwitch = (
   rerender: boolean,
   currentCommand: string[],
-  themes: string[]
+  themes: string[],
+  lineIndex: number
 ): boolean =>
-  rerender && // is submitted
-  currentCommand[0] === "themes" && // current command starts with 'themes'
-  currentCommand[1] === "set" && // first arg is 'set'
-  currentCommand.length > 1 && // current command has arg
-  currentCommand.length < 4 && // if num of arg is valid (not `themes set light sth`)
-  _.includes(themes, currentCommand[2]); // arg last part is one of id
+  lineIndex === 0 &&
+  rerender &&
+  currentCommand[0] === "themes" &&
+  currentCommand[1] === "set" &&
+  currentCommand.length > 1 &&
+  currentCommand.length < 4 &&
+  _.includes(themes, currentCommand[2]);
 
 /**
  * Perform advanced tab actions
