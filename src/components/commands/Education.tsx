@@ -18,7 +18,7 @@ const Education: React.FC = () => {
 const eduBg = [
   {
     title: "B.Sc in Computer Science",
-    desc: "University of Waterloo | 2022 - 2026 (expected)",
+    desc: "University of Waterloo | 2025 - 2030 (expected)",
   },
   {
     title: "Growth/GTM Intern",

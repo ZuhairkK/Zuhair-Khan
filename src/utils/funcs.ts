@@ -45,7 +45,7 @@ export const checkRedirect = (
   lineIndex: number
 ): boolean => {
   const id = parseInt(currentCommand[2], 10);
-  const validIds = command === "projects" ? [1, 2] : [1, 2, 3, 4];
+  const validIds = command === "projects" ? [1, 2] : [1, 2, 3, 4, 5, 6];
   return (
     lineIndex === 0 &&
     rerender &&
@@ -134,7 +134,14 @@ export const argTab = (
 
   // 7) if input is 'socials go '
   else if (_.startsWith(inputVal, "socials go ")) {
-    ["1.GitHub", "2.LinkedIn", "3.Email", "4.Resume"].forEach(t => {
+    [
+      "1.GitHub",
+      "2.LinkedIn",
+      "3.Email",
+      "4.Resume",
+      "5.Instagram (personal)",
+      "6.Instagram (StudyStream)",
+    ].forEach(t => {
       hintsCmds = [...hintsCmds, t];
     });
     return hintsCmds;

@@ -162,8 +162,8 @@ describe("Terminal Component", () => {
       });
     });
 
-    // 4 socials: GitHub, LinkedIn, Email, Resume
-    [1, 2, 3, 4].forEach(num => {
+    // 6 socials: GitHub, LinkedIn, Email, Resume, Instagram x2
+    [1, 2, 3, 4, 5, 6].forEach(num => {
       it(`should redirect to social media when user type 'socials go ${num}' cmd`, async () => {
         await user.type(terminalInput, `socials go ${num}{enter}`);
         expect(window.open).toHaveBeenCalled();
