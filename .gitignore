@@ -12,6 +12,19 @@ dist
 dist-ssr
 *.local
 
+# Next.js build artifacts (leftover from previous setup)
+.next/
+next-env.d.ts
+next.config.ts
+netlify.toml
+eslint.config.mjs
+
+# Old Next.js app directory
+app/
+
+# Claude commands
+.claude/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

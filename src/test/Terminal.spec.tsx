@@ -54,10 +54,10 @@ describe("Terminal Component", () => {
       );
     });
 
-    it("should return '/home/satnaing' when user type 'pwd' cmd", async () => {
+    it("should return '/home/zuhair' when user type 'pwd' cmd", async () => {
       await user.type(terminalInput, "pwd{enter}");
       expect(screen.getByTestId("latest-output").firstChild?.textContent).toBe(
-        "/home/satnaing"
+        "/home/zuhair"
       );
     });
 
@@ -150,19 +150,20 @@ describe("Terminal Component", () => {
       await user.type(terminalInput, "email{enter}");
       expect(window.open).toHaveBeenCalled();
       expect(screen.getByTestId("latest-output").firstChild?.textContent).toBe(
-        "contact@satnaing.dev"
+        "zn3khan@uwaterloo.ca"
       );
     });
 
-    const nums = [1, 2, 3, 4];
-    nums.forEach(num => {
+    // Only 2 projects now (EndoRisk AI, TransitFIFA)
+    [1, 2].forEach(num => {
       it(`should redirect to project URL when user type 'projects go ${num}' cmd`, async () => {
         await user.type(terminalInput, `projects go ${num}{enter}`);
         expect(window.open).toHaveBeenCalled();
       });
     });
 
-    nums.forEach(num => {
+    // 4 socials: GitHub, LinkedIn, Email, Resume
+    [1, 2, 3, 4].forEach(num => {
       it(`should redirect to social media when user type 'socials go ${num}' cmd`, async () => {
         await user.type(terminalInput, `socials go ${num}{enter}`);
         expect(window.open).toHaveBeenCalled();
@@ -201,8 +202,8 @@ describe("Terminal Component", () => {
         const arg = cmd === "themes" ? "go light" : "set 4";
         window.open = vi.fn();
 
-        // firstly run commands correct options
-        await user.type(terminalInput, `projects go 4{enter}`);
+        // firstly run commands with correct options
+        await user.type(terminalInput, `projects go 2{enter}`);
         await user.type(terminalInput, `socials go 4{enter}`);
         await user.type(terminalInput, `themes set espresso{enter}`);
 
